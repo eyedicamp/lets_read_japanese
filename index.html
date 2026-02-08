@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>여행용 히라가나 & 가타카나 학습</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">여행에서 바로 쓰는</p>
+          <h1>히라가나 & 가타카나 스테이션</h1>
+          <p class="app__description">
+            히라가나와 가타카나를 행별로 암기하고, 여행 단어로 바로 테스트해보세요.
+          </p>
+        </div>
+        <button class="ghost" id="go-home" aria-label="홈으로 이동">
+          홈
+        </button>
+      </header>
+
+      <main class="panel">
+        <section id="home" class="panel__section is-active">
+          <div class="hero">
+            <div class="hero__content">
+              <h2>오늘은 어디까지 읽어볼까요?</h2>
+              <p>
+                학습하기에서는 행별 연상법과 함께 문자를 익히고, 연습하기에서는 여행
+                현장에서 자주 보는 단어를 랜덤으로 풀어봅니다.
+              </p>
+            </div>
+            <div class="hero__actions">
+              <button class="primary" data-target="learn">학습하기</button>
+              <button class="secondary" data-target="practice">연습하기</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="learn" class="panel__section">
+          <h2>학습하기</h2>
+          <p class="section__hint">어떤 문자를 먼저 익히고 싶나요?</p>
+          <div class="button-grid">
+            <button class="card" data-script="hiragana">히라가나</button>
+            <button class="card" data-script="katakana">가타카나</button>
+          </div>
+        </section>
+
+        <section id="practice" class="panel__section">
+          <h2>연습하기</h2>
+          <p class="section__hint">여행 단어를 어떤 문자로 연습할까요?</p>
+          <div class="button-grid">
+            <button class="card" data-practice="hiragana">히라가나</button>
+            <button class="card" data-practice="katakana">가타카나</button>
+          </div>
+        </section>
+
+        <section id="learn-detail" class="panel__section">
+          <div class="section__header">
+            <div>
+              <h2 id="learn-title"></h2>
+              <p id="learn-subtitle" class="section__hint"></p>
+            </div>
+            <div class="section__actions">
+              <button class="secondary" id="start-row-quiz">확인하기</button>
+              <button class="ghost" data-back="learn">문자 선택으로</button>
+            </div>
+          </div>
+          <div id="row-buttons" class="row-grid"></div>
+          <div id="row-content" class="row-content"></div>
+          <div id="row-quiz" class="row-quiz" hidden>
+            <div class="row-quiz__header">
+              <h3>행별 한 글자 확인</h3>
+              <p class="section__hint">
+                보여지는 글자의 발음을 골라주세요. 한 번씩 모두 맞추면 완료됩니다.
+              </p>
+            </div>
+            <div class="row-quiz__card">
+              <span class="row-quiz__label">문제</span>
+              <span id="row-quiz-glyph" class="row-quiz__glyph"></span>
+            </div>
+            <div id="row-quiz-options" class="row-quiz__options"></div>
+            <p id="row-quiz-feedback" class="row-quiz__feedback"></p>
+          </div>
+        </section>
+
+        <section id="practice-detail" class="panel__section">
+          <div class="section__header">
+            <div>
+              <h2 id="practice-title"></h2>
+              <p class="section__hint">
+                화면에 보이는 단어의 한국어 발음을 입력하세요.
+              </p>
+            </div>
+            <div class="section__actions">
+              <button class="ghost" data-back="practice">문자 선택으로</button>
+            </div>
+          </div>
+          <div class="practice">
+            <div class="practice__card">
+              <span class="practice__badge" id="practice-badge"></span>
+              <p class="practice__word" id="practice-word"></p>
+              <p class="practice__meaning" id="practice-meaning"></p>
+            </div>
+            <form id="practice-form" class="practice__form">
+              <label for="practice-input">한국어 발음 입력</label>
+              <div class="practice__input">
+                <input
+                  id="practice-input"
+                  type="text"
+                  placeholder="예: 아침 (あさ)"
+                  autocomplete="off"
+                />
+                <button class="primary" type="submit">확인</button>
+              </div>
+              <p class="practice__feedback" id="practice-feedback"></p>
+            </form>
+            <div class="practice__stats">
+              <div>
+                <span>정답</span>
+                <strong id="practice-correct">0</strong>
+              </div>
+              <div>
+                <span>도전</span>
+                <strong id="practice-total">0</strong>
+              </div>
+            </div>
+            <button class="secondary" id="practice-next">다음 문제</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app__footer">
+        <p>학습 흐름: 홈 → 학습/연습 → 행별 학습 또는 랜덤 단어 테스트</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
